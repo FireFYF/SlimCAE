@@ -1,4 +1,4 @@
 # SlimCAE
 Slimmable Compressive Autoencoders for Practical Neural Image Compression
 
-The code is coming soon ...
+SlimConv is added in ./tensorflow_compression, which is based on the signal_conv operation from tensorflow data compression tools.
