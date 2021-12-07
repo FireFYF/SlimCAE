@@ -14,14 +14,20 @@ Neural image compression leverages deep neural networks to outperform traditiona
 (In our paper we use the version 1.1 for our MAE method without hyperprior and version 1.2 with hyperprior and autoregressive.)
 - Add the slimmable convolutional layer './tensorflow_compression/signal_conv_slim.py' and the slimmable GDN layer './tensorflow_compression/gdn_slim_plus.py' into the compression library.
 
-# Train a SlimCAE with a set of predefined RD tradeoffs for different widths   
+# Train a SlimCAE with a set of predefined RD tradeoffs for different widths
+```bash
 python SlimCAE.py -v --train_glob='/path_to_training_dataset/*.png' --patchsize 240 --num_filter 192 --switch_list 192 144 96 72 48 --train_jointly --lambda 2048 1024 512 256 128 --last_step 1000000 --checkpoint_dir /path_for_saving_the_model train
+```
 
 # Evaluate a pretrained model
+```bash
 python SlimCAE.py --num_filter 192 --switch_list 192 144 96 72 48 --checkpoint_dir /path_of_the_pretrain_model --inputPath /path_of_test_dataset/ --evaluation_name /path_for_saving_results evaluate
+```
 
 # Train a SlimCAE with lambda-scheduling
+```bash
 python SlimCAE.py -v --train_glob='/path_to_training_dataset/*.png' --patchsize 240 --num_filter 192 --switch_list 192 144 96 72 48 --train_jointly --lambda 4000 4000 4000 4000 4000 --last_step 1000000 --checkpoint_dir /path_for_saving_the_model --inputPath /path_of_validation_dataset --evaluation_name /path_for_saving_the_results_on_validation_dataset train_lambda_schedule
+```
 
 # Main references 
 Our work heavily relys on the following projects: 
